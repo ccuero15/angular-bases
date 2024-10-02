@@ -1,28 +1,38 @@
 import { Injectable } from '@angular/core';
+import { v4 as uuid } from 'uuid'
+
+
 import { Character } from '../interfaces/character.interface';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class DbzService {
 
-  public character: Character[] = [ {
+  public characters: Character[] = [ {
+    id: uuid(),
     name: 'Kriln',
     power: 3000
   },
   {
+    id: uuid(),
     name: 'Goku',
     power: 10000
   }, {
-    name:'Veguetta',
-    power:7000
+    id: uuid(),
+    name: 'Veguetta',
+    power: 7000
   }
   ];
 
-  onNewCharacter(newCharacter:Character):void{
-    this.character.push(newCharacter)
+  onNewCharacter(character: Character): void {
+    const newCharacter: Character = { ...character, id: uuid() }
+    console.log(newCharacter)
+    this.characters.push(newCharacter)
   }
-
-  onDeleteCharacter(id:number):void{
+  deleteCharacterById(id: string) {
+   this.characters = this.characters.filter(character => character.id !== id )
+  }
+  /* onDeleteCharacter(id: number): void {
     console.log(id)
-    this.character.splice(id,1)
-  }
+    this.character.splice(id, 1)
+  } */
 }

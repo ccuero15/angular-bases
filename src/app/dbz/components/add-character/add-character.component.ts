@@ -11,6 +11,7 @@ export class AddCharacterComponent {
   @Output()
   onNewCharacter: EventEmitter<Character> = new EventEmitter();
   public character: Character = {
+    id: '',
     name: '',
     power: 0
   }
@@ -21,8 +22,9 @@ export class AddCharacterComponent {
     this.onNewCharacter.emit(this.character)
     console.log(this.character)
     this.character = {
-      name:'',
-      power:0
+      id:'',
+      name: '',
+      power: 0
     }
   }
 }
