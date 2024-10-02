@@ -16,13 +16,12 @@ export class AddCharacterComponent {
     power: 0
   }
   @Output()
-
   emitCharacter(): void {
     if (this.character.name.length === 0) return
     this.onNewCharacter.emit(this.character)
-    console.log(this.character)
+    //console.log(this.character)
     this.character = {
-      id:'',
+      id: '',
       name: '',
       power: 0
     }
